@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- app search page-->
+    <div data-role="page" id="pokeSearch-page">
+        <div data-role="header" data-theme="b">
+            <h1>Pokeapi Demos</h1>
+        </div>
+        <div data-role="main" class="ui-content">
+            <form id="pokeForm" action="#pokeDetails-page" method="post">
+                <div>
+                    <label for="pokeSearch">Pokemon name or number:
+                        <input type="text" name="pokeInput" id="pokeSearch" placeholder="Name/Number" value="">
+                </div>
+                <br>
+                <div>
+                        <button id="submit" class="ui-btn" type="button" onclick="pokeSubmit();">Search</button>
+                </div>
+            </form>
+            <div>
+                <ul data-role="listview" data-inset="true" id="pokeDetails">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script-e.js"></script>
+</body>
+</html>
