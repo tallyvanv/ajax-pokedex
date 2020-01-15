@@ -6,5 +6,7 @@
         //const data = await pokedex.json();
         console.log(response);
     }
-    document.getElementById("run").onclick = function() {getPokemon()};
+    document.getElementById("run").addEventListener("click", function() {
+        getPokemon()
+    })
 })();
