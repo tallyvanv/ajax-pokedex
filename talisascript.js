@@ -1,6 +1,6 @@
 (() => {
     document.getElementById("run").addEventListener("click", function() {
-    let pokemonInput = document.getElementById("pokemonToGet").value;
+    let pokemonInput = (document.getElementById("pokemonToGet").value).toLowerCase();
         async function getPokemon() {
             let path = `https://pokeapi.co/api/v2/pokemon/${pokemonInput}`;
             const data = await axios.get(path);
@@ -19,6 +19,7 @@
             console.log(data.data.id);
             att.value = data.data.sprites.front_default;
             console.log(att.value);
+            sprite.setAttributeNode(att);
 
         }
         async function getEvolution() {
