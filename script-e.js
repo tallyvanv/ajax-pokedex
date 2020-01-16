@@ -1,12 +1,10 @@
-https://pokeapi.co/api/v2/pokemon/
 
-    //console.log(currentDate + "today is");
+
+/*    //console.log(currentDate + "today is");
     document.getElementById("submit").addEventListener("click", function () {
-        let city = document.getElementById("search").value;
-        let inputCity = document.getElementById("currentCity");
-        inputCity.innerHTML = city;
 
-        let searchPokemon = document.getElementById("pokeSearch").value;
+        const input;
+        let searchPokemon = document.getElementById("pokemonToGet").value;
         //let inputPokemon = document.getElementById("currentPokemon");
         inputPokemon.innerHTML = searchPokemon;
 
@@ -31,11 +29,77 @@ https://pokeapi.co/api/v2/pokemon/
                             console.log(allPokemon);
                         }
                     )
+            }*/
+
+(() => {
+
+    document.getElementById("run").addEventListener("click", function() {
+        let pokemonInput = (document.getElementById("pokemonToGet").value).toLowerCase();
+        async function getPokemon() {
+            let path = `https://pokeapi.co/api/v2/pokemon/${pokemonInput}`;
+            const data = await axios.get(path);
+            //const data = await pokedex.json();
+            console.log(data);
+
+            let pokeName = document.getElementById("pokeName");
+            let pokeId = document.getElementById("pokeId");
+            let sprite = document.getElementById("sprite");
+            let att = document.createAttribute("src");
+            let moves = document.getElementById("moves");
+
+            pokeName.innerHTML = data.data.species.name;
+            console.log(data.data.species.name);
+            pokeId.innerHTML = data.data.id;
+            console.log(data.data.id);
+            att.value = data.data.sprites.front_default;
+            console.log(att.value);
+            sprite.setAttributeNode(att);
+
+        }
+
+        let evolveSprite;
+        async function getEvolution() {
+            let path = `https://pokeapi.co/api/v2/pokemon-species/${pokemonInput}`;
+            const data = await axios.get(path);
+            console.log(data);
+
+
+            //Getting evolution
+            let evolvesFromName;
+            function evolveFrom() {
+                evolvesFromName = data.data.evolves_from_species.name;
+                return evolvesFromName;
+            }
+            evolveFrom();
+
+            async function getEvolutionPic() {
+                let path = `https://pokeapi.co/api/v2/pokemon/${evolvesFromName}`;
+                const evolvePicData = await axios.get(path);
+                //const data = await pokedex.json();
+                console.log(evolvePicData);
+
+                function evolvePic () {
+                    evolveSprite = (evolvePicData.data.sprites.front_default);
+                    return evolvePic;
+                }
+                evolvePic ();
+                console.log(evolvePic());
             }
 
 
+            console.log(evolveFrom());
 
-            /*THINGS TO GET
+            document.getElementById("moves").innerHTML = "Evolves from " + evolveFrom();
+            let att = document.createAttribute("src");
+            sprite.setAttributeNode(att);
+            att.value = getEvolutionPic();
+        }
+
+
+        getPokemon();
+        getEvolution();
+
+        /*THINGS TO GET
             The ID-number
             An image (sprite)
             At least 4 "moves"
@@ -45,7 +109,16 @@ https://pokeapi.co/api/v2/pokemon/
 
 
 
+    });
+})();
 
+
+
+
+
+
+
+/*
 
             function pokeSubmit() {
                 var param = document.getElementById("pokeInput").value;
@@ -108,4 +181,4 @@ https://pokeapi.co/api/v2/pokemon/
                     });
 
                 });
-            }
+            }*/
