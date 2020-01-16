@@ -7,15 +7,16 @@
 
             let pokeName = document.getElementById("pokeName");
             let pokeId = document.getElementById("pokeId");
-            let sprite = document.getElementById("sprite");
-            let att = document.createAttribute("src");
             let moves = document.getElementById("moves");
 
             pokeName.innerHTML = data.data.species.name;
             pokeId.innerHTML = data.data.id;
+
+
+            let sprite = document.getElementById("sprite");
+            let att = document.createAttribute("src");
             att.value = data.data.sprites.front_default;
             sprite.setAttributeNode(att);
-
         }
         async function getEvolution() {
             let path = `https://pokeapi.co/api/v2/pokemon-species/${pokemonInput}`;
