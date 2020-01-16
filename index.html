@@ -1,64 +1,110 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pokédex</title>
+    <title>Pokedex test</title>
+    <link rel="stylesheet" href="test.css">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
 </head>
 <body>
-<input type="text" id="pokemonToGet" />
-<button id="run">Get Pokemon</button>
-
-<h1 id="pokeName"></h1>
-<div id="pokeId">
-
+<div id="searchBar">
+    <input type="text" id="pokemonToGet"/>
+    <button id="run">Get Pokemon</button>
 </div>
-<div id="picDiv">
-    <img id ="sprite">
-</div>
-
-<div id="moves">
-
-</div>
-
-<section id="preEvolution">
-    <p id="evolutionsInfo">
-    </p>
-    <img id="Pevolution">
-</section>
-
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script type="text/javascript" src="script.js"></script>
-<script type="text/javascript" src="talisascript.js"></script>
-
-<!--<script type="text/javascript" src="script-e.js"></script>-->
-
-    <!-- app search page-->
-<!--    <div data-role="page" id="pokeSearch-page">
-        <div data-role="header" data-theme="b">
-            <h1>Pokeapi Demos</h1>
+<div id="pokedex">
+    <div id="left">
+        <div id="logo"></div>
+        <div id="bg_curve1_left"></div>
+        <div id="bg_curve2_left"></div>
+        <div id="curve1_left">
+            <div id="buttonGlass">
+                <div id="reflect"> </div>
+            </div>
+            <div id="miniButtonGlass1"></div>
+            <div id="miniButtonGlass2"></div>
+            <div id="miniButtonGlass3"></div>
         </div>
-        <div data-role="main" class="ui-content">
-            <form id="pokeForm" action="#pokeDetails-page" method="post">
-                <div>
-                    <label for="pokeSearch">Pokemon name or number:
-                        <input type="text" name="pokeInput" id="pokeSearch" placeholder="Name/Number" value="">
-                </div>
-                <br>
-                <div>
-                        <button id="submit" class="ui-btn" type="button" onclick="pokeSubmit();">Search</button>
-                </div>
-            </form>
-            <div>
-                <ul data-role="listview" data-inset="true" id="pokeDetails">
-                </ul>
+        <div id="curve2_left">
+            <div id="junction">
+                <div id="junction1"></div>
+                <div id="junction2"></div>
+            </div>
+        </div>
+        <div id="screen">
+            <div id="topPicture">
+                <div id="buttontopPicture1"></div>
+                <div id="buttontopPicture2"></div>
+            </div>
+            <!--            Where our sprites and evolved from will go-->
+            <div id="picture">
+                <img id="Pevolution" />
+                <img id="sprite" />
+
+            </div>
+            <div id="buttonbottomPicture"></div>
+            <div id="speakers">
+                <div class="sp"></div>
+                <div class="sp"></div>
+                <div class="sp"></div>
+                <div class="sp"></div>
+            </div>
+        </div>
+        <div id="bigbluebutton"></div>
+        <div id="barbutton1"></div>
+        <div id="barbutton2"></div>
+        <div id="cross">
+            <div id="leftcross">
+                <div id="leftT"></div>
+            </div>
+            <div id="topcross">
+                <div id="upT"></div>
+            </div>
+            <div id="rightcross">
+                <div id="rightT"></div>
+            </div>
+            <div id="midcross">
+                <div id="midCircle"></div>
+            </div>
+            <div id="botcross">
+                <div id="downT"></div>
             </div>
         </div>
     </div>
-
-    <script src="./script-e.js"></script>-->
+    <div id="right">
+        <div id="stats">
+            <strong>Name:</strong> <span id="pokeName">Psyduck</span><br/>
+            <strong>ID:</strong> <span id="pokeId">Water</span><br/>
+            <span id="evolutionsInfo">Evolution?</span><br/>
+        </div>
+        <div id="blueButtons1">
+            <div class="blueButton"></div>
+            <div class="blueButton"></div>
+            <div class="blueButton"></div>
+            <div class="blueButton"></div>
+            <div class="blueButton"></div>
+        </div>
+        <div id="blueButtons2">
+            <div class="blueButton"></div>
+            <div class="blueButton"></div>
+            <div class="blueButton"></div>
+            <div class="blueButton"></div>
+            <div class="blueButton"></div>
+        </div>
+        <div id="miniButtonGlass4"></div>
+        <div id="miniButtonGlass5"></div>
+        <div id="barbutton3"></div>
+        <div id="barbutton4"></div>
+        <div id="yellowBox1"></div>
+        <div id="yellowBox2"></div>
+        <div id="bg_curve1_right"></div>
+        <div id="bg_curve2_right"></div>
+        <div id="curve1_right"></div>
+        <div id="curve2_right"></div>
+    </div>
+</div>
+<script type="text/javascript" src="script.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
 </html>
