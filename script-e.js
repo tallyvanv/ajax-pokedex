@@ -66,26 +66,40 @@
             const dataEvol = await axios.get(path);
             console.log(dataEvol);
 
-            let evolvesFromName = dataEvol.data.evolves_from_species.name;
 
-            getEvolutionPic();
 
-            //getting img using the name found in the evolve info
-            async function getEvolutionPic() {
-                let path = `https://pokeapi.co/api/v2/pokemon/${evolvesFromName}`;
-                const evolvePicData = await axios.get(path);
-
-                let img = evolvePicData.data.sprites.front_default;
-
-                evolveSprite = (evolvePicData.data.sprites.front_default);
-
+            if (dataEvol.data.evolves_from_species === null) {
+                document.getElementById("evolutionsInfo").innerHTML = " ";
                 let evolSprite = document.querySelector("#Pevolution");
                 let evolAtt = document.createAttribute("src");
-                evolAtt.value = img;
+                evolAtt.value = " ";
                 evolSprite.setAttributeNode(evolAtt);
             }
+            else {
+                //getting img using the name found in the evolve info
+                let evolvesFromName = dataEvol.data.evolves_from_species.name;
 
-            document.getElementById("evolutionsInfo").innerHTML = "Evolves from " + evolvesFromName;
+                async function getEvolutionPic() {
+                    let path = `https://pokeapi.co/api/v2/pokemon/${evolvesFromName}`;
+                    const evolvePicData = await axios.get(path);
+
+                    let img = evolvePicData.data.sprites.front_default;
+
+                    evolveSprite = (evolvePicData.data.sprites.front_default);
+
+                    let evolSprite = document.querySelector("#Pevolution");
+                    let evolAtt = document.createAttribute("src");
+                    evolAtt.value = img;
+                    evolSprite.setAttributeNode(evolAtt);
+
+                    document.getElementById("evolutionsInfo").innerHTML = "Evolves from " + evolvesFromName;
+                }
+
+                getEvolutionPic();
+            }
+
+
+            //document.getElementById("evolutionsInfo").innerHTML = "Evolves from " + evolvesFromName;
 
         }
 
