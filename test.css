@@ -3,7 +3,11 @@
     padding: 0;
 }
 
-
+#searchBar {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
 
 @media all {
 
@@ -294,7 +298,7 @@
         background-color: #fff;
         border: 3px solid #494949;
         clear: both;
-        display: block;
+        display: flex;
 
         border-radius: 15px;
         -webkit-border-radius: 15px;
@@ -306,6 +310,10 @@
     {
         display: block;
         margin: auto;
+    }
+
+    #sprite {
+        width: 75%;
     }
 
     div#topPicture

@@ -4,6 +4,7 @@
         async function getPokemon() {
             let path = `https://pokeapi.co/api/v2/pokemon/${pokemonInput.toLowerCase()}`;
             const data = await axios.get(path);
+            console.log(data);
 
             let pokeName = document.getElementById("pokeName");
             let pokeId = document.getElementById("pokeId");
@@ -23,7 +24,7 @@
         }
         let evolveSprite;
         async function getEvolution() {
-            let path = `https://pokeapi.co/api/v2/pokemon-species/${pokemonInput}`;
+            let path = `https://pokeapi.co/api/v2/pokemon-species/${pokemonInput.toLowerCase()}`;
             const dataEvol = await axios.get(path);
             console.log(dataEvol);
 
@@ -39,11 +40,13 @@
             }
             else {
                 //getting img using the name found in the evolve info
-                let evolvesFromName = dataEvol.data.evolves_from_species.name;
+                let findEvol = dataEvol.data.evolves_from_species.name;
+                let evolvesFromName = findEvol.charAt(0).toUpperCase() + findEvol.slice(1);
                 document.getElementById("evolutionsInfo").innerHTML = "Evolves from " + evolvesFromName;
 
+                console.log(document.getElementById("evolutionsInfo").innerHTML);
                 async function getEvolutionPic() {
-                    let path = `https://pokeapi.co/api/v2/pokemon/${evolvesFromName}`;
+                    let path = `https://pokeapi.co/api/v2/pokemon/${evolvesFromName.toLowerCase()}`;
                     const evolvePicData = await axios.get(path);
 
                     let img = evolvePicData.data.sprites.front_default;
