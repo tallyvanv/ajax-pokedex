@@ -1,4 +1,5 @@
-/*    //console.log(currentDate + "today is");
+/*
+/!*    //console.log(currentDate + "today is");
     document.getElementById("submit").addEventListener("click", function () {
 
         const input;
@@ -27,7 +28,7 @@
                             console.log(allPokemon);
                         }
                     )
-            }*/
+            }*!/
 
 (() => {
 
@@ -35,7 +36,7 @@
     document.getElementById("run").addEventListener("click", function () {
         let pokemonInput = (document.getElementById("pokemonToGet").value).toLowerCase();
 
-        async function getPokemon() {
+/!*        async function getPokemon() {
             let path = `https://pokeapi.co/api/v2/pokemon/${pokemonInput}`;
             DATA = await axios.get(path);
             //const data = await pokedex.json();
@@ -55,7 +56,7 @@
             console.log(att.value);
             sprite.setAttributeNode(att);
 
-        }
+        }*!/
 
 
         //Getting evolution
@@ -107,20 +108,20 @@
         getPokemon();
         getEvolution();
 
-        /*THINGS TO GET
+        /!*THINGS TO GET
             The ID-number
             An image (sprite)
             At least 4 "moves"
             The previous evolution, only if it exists, along with their name and image.
             Be carefull, you cannot just do ID-1 to get the previous form,
-            for example look into "magmar" - "magmortar". You have to use a seperate api call for this!*/
+            for example look into "magmar" - "magmortar". You have to use a seperate api call for this!*!/
 
 
     });
 })();
 
 
-/*
+/!*
 
             function pokeSubmit() {
                 var param = document.getElementById("pokeInput").value;
@@ -184,4 +185,5 @@
 
                 });
             }}
-            }*/
+            }*!/
+*/

@@ -1,6 +1,8 @@
 (() => {
     document.getElementById("run").addEventListener("click", function() {
         let pokemonInput = document.getElementById("pokemonToGet").value;
+
+
         async function getPokemon() {
             let path = `https://pokeapi.co/api/v2/pokemon/${pokemonInput.toLowerCase()}`;
             const data = await axios.get(path);
