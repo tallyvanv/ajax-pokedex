@@ -294,6 +294,7 @@
         background-color: #fff;
         border: 3px solid #494949;
         clear: both;
+        display: block;
 
         border-radius: 15px;
         -webkit-border-radius: 15px;
@@ -304,7 +305,7 @@
     div#picture img
     {
         display: block;
-        margin: 0 auto;
+        margin: auto;
     }
 
     div#topPicture
