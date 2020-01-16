@@ -1,5 +1,3 @@
-
-
 /*    //console.log(currentDate + "today is");
     document.getElementById("submit").addEventListener("click", function () {
 
@@ -33,13 +31,15 @@
 
 (() => {
 
-    document.getElementById("run").addEventListener("click", function() {
+    let DATA;
+    document.getElementById("run").addEventListener("click", function () {
         let pokemonInput = (document.getElementById("pokemonToGet").value).toLowerCase();
+
         async function getPokemon() {
             let path = `https://pokeapi.co/api/v2/pokemon/${pokemonInput}`;
-            const data = await axios.get(path);
+            DATA = await axios.get(path);
             //const data = await pokedex.json();
-            console.log(data);
+            console.log(DATA);
 
             let pokeName = document.getElementById("pokeName");
             let pokeId = document.getElementById("pokeId");
@@ -47,52 +47,60 @@
             let att = document.createAttribute("src");
             let moves = document.getElementById("moves");
 
-            pokeName.innerHTML = data.data.species.name;
-            console.log(data.data.species.name);
-            pokeId.innerHTML = data.data.id;
-            console.log(data.data.id);
-            att.value = data.data.sprites.front_default;
+            pokeName.innerHTML = DATA.data.species.name;
+            console.log(DATA.data.species.name);
+            pokeId.innerHTML = DATA.data.id;
+            console.log(DATA.data.id);
+            att.value = DATA.data.sprites.front_default;
             console.log(att.value);
             sprite.setAttributeNode(att);
 
         }
 
+
+        //Getting evolution
         let evolveSprite;
+
         async function getEvolution() {
             let path = `https://pokeapi.co/api/v2/pokemon-species/${pokemonInput}`;
-            const data = await axios.get(path);
-            console.log(data);
+            const dataEvol = await axios.get(path);
+            console.log(dataEvol);
 
 
-            //Getting evolution
-            let evolvesFromName;
-            function evolveFrom() {
-                evolvesFromName = data.data.evolves_from_species.name;
-                return evolvesFromName;
+
+            if (dataEvol.data.evolves_from_species === null) {
+                document.getElementById("evolutionsInfo").innerHTML = " ";
+                let evolSprite = document.querySelector("#Pevolution");
+                let evolAtt = document.createAttribute("src");
+                evolAtt.value = " ";
+                evolSprite.setAttributeNode(evolAtt);
             }
-            evolveFrom();
+            else {
+                //getting img using the name found in the evolve info
+                let evolvesFromName = dataEvol.data.evolves_from_species.name;
 
-            async function getEvolutionPic() {
-                let path = `https://pokeapi.co/api/v2/pokemon/${evolvesFromName}`;
-                const evolvePicData = await axios.get(path);
-                //const data = await pokedex.json();
-                console.log(evolvePicData);
+                async function getEvolutionPic() {
+                    let path = `https://pokeapi.co/api/v2/pokemon/${evolvesFromName}`;
+                    const evolvePicData = await axios.get(path);
 
-                function evolvePic () {
+                    let img = evolvePicData.data.sprites.front_default;
+
                     evolveSprite = (evolvePicData.data.sprites.front_default);
-                    return evolvePic;
+
+                    let evolSprite = document.querySelector("#Pevolution");
+                    let evolAtt = document.createAttribute("src");
+                    evolAtt.value = img;
+                    evolSprite.setAttributeNode(evolAtt);
+
+                    document.getElementById("evolutionsInfo").innerHTML = "Evolves from " + evolvesFromName;
                 }
-                evolvePic ();
-                console.log(evolvePic());
+
+                getEvolutionPic();
             }
 
 
-            console.log(evolveFrom());
+            //document.getElementById("evolutionsInfo").innerHTML = "Evolves from " + evolvesFromName;
 
-            document.getElementById("moves").innerHTML = "Evolves from " + evolveFrom();
-            let att = document.createAttribute("src");
-            sprite.setAttributeNode(att);
-            att.value = getEvolutionPic();
         }
 
 
@@ -108,14 +116,8 @@
             for example look into "magmar" - "magmortar". You have to use a seperate api call for this!*/
 
 
-
     });
 })();
-
-
-
-
-
 
 
 /*
