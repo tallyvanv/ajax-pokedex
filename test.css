@@ -11,6 +11,10 @@
 
 @media all {
 
+    #moves {
+        list-style-type: none;
+    }
+
     div#pokedex
     {
         width: 100%;
