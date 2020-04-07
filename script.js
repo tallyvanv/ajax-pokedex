@@ -1,6 +1,10 @@
 (() => {
+
     document.getElementById("run").addEventListener("click", function() {
         let pokemonInput = document.getElementById("pokemonToGet").value;
+        function randomNumber(thelength){
+            return Math.round(Math.random() * thelength);
+        }
         async function getPokemon() {
             let path = `https://pokeapi.co/api/v2/pokemon/${pokemonInput.toLowerCase()}`;
             const data = await axios.get(path);
@@ -19,6 +23,20 @@
             let att = document.createAttribute("src");
             att.value = data.data.sprites.front_default;
             sprite.setAttributeNode(att);
+
+            let movesArr = [];
+            let lengthArr = data.data.moves.length -1;
+            for (let i=0; i < data.data.moves.length; i++) {
+                movesArr.push(data.data.moves[randomNumber(lengthArr)].move.name);
+            }
+
+            let filterMoves = movesArr.filter((item, index) => {
+                return movesArr.indexOf(item) === index;
+            });
+
+            for (let j =1; j < 5; j++) {
+                document.getElementById("move" + j + "").innerHTML = filterMoves[j];
+            }
 
 
         }

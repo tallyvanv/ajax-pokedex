@@ -1,3 +1,4 @@
+/*
 (() => {
     document.getElementById("run").addEventListener("click", function() {
     let pokemonInput = document.getElementById("pokemonToGet").value;
@@ -28,4 +29,11 @@
         getPokemon();
         getEvolution();
     });
-})();
+
+    function randNumb {
+        while ...
+    }
+
+    empty array
+
+})();*/
